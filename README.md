@@ -122,6 +122,9 @@ To make recording your **3-minute QA demo video** effortless, Cine-Stream includ
 
 ## 🚢 Deployment Guide
 
+### Deploying to GitHub Pages
+The included GitHub Actions workflow builds and deploys the app to GitHub Pages whenever changes are pushed to `main`. Enable **Settings → Pages → Build and deployment → GitHub Actions** for the repository; the app uses the repository path and hash-based navigation on Pages. Without configured API keys, it runs using the built-in demo catalog.
+
 ### Deploying to Vercel
 1. Push your repository to GitHub.
 2. Import the project in your [Vercel Dashboard](https://vercel.com).

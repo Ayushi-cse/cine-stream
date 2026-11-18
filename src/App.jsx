@@ -9,6 +9,16 @@ import NetworkInspector from './components/NetworkInspector';
 import { useFavorites } from './hooks/useFavorites';
 import { useSettings } from './context/SettingsContext';
 
+const appBasePath = import.meta.env.BASE_URL;
+const isFavoritesPath = () =>
+  window.location.pathname.endsWith('/favorites') || window.location.hash === '#/favorites';
+const getTabUrl = (tab) => {
+  if (appBasePath !== '/') {
+    return tab === 'favorites' ? `${appBasePath}#/favorites` : appBasePath;
+  }
+  return tab === 'favorites' ? '/favorites' : '/';
+};
+
 /**
  * Cine-Stream Main Application Component
  * 
@@ -24,9 +34,7 @@ export function App() {
 
   // Navigation state: 'discover' | 'favorites'
   const [currentTab, setCurrentTab] = useState(() => {
-    return window.location.pathname === '/favorites' || window.location.hash === '#/favorites'
-      ? 'favorites'
-      : 'discover';
+    return isFavoritesPath() ? 'favorites' : 'discover';
   });
 
   // Modal states
@@ -40,8 +48,7 @@ export function App() {
   // Synchronize browser history / URL with active tab
   useEffect(() => {
     const handlePopState = () => {
-      const isFav = window.location.pathname === '/favorites' || window.location.hash === '#/favorites';
-      setCurrentTab(isFav ? 'favorites' : 'discover');
+      setCurrentTab(isFavoritesPath() ? 'favorites' : 'discover');
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -50,8 +57,7 @@ export function App() {
 
   const handleTabChange = (newTab) => {
     setCurrentTab(newTab);
-    const targetUrl = newTab === 'favorites' ? '/favorites' : '/';
-    window.history.pushState(null, '', targetUrl);
+    window.history.pushState(null, '', getTabUrl(newTab));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -70,7 +76,7 @@ export function App() {
           if (!previewOnly) {
             setAiMatchedMovie(topResult);
             setCurrentTab('discover');
-            window.history.pushState(null, '', '/');
+            window.history.pushState(null, '', getTabUrl('discover'));
           }
           return topResult;
         }
