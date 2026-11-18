@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 750" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f1f1f"/>
+      <stop offset="50%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E50914" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#E50914" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="750" fill="url(#bg)"/>
+  <rect x="0" y="0" width="500" height="4" fill="url(#glow)"/>
+  
+  <!-- Film slate/reel graphic -->
+  <g transform="translate(190, 260)" stroke="#3a3a3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <rect x="0" y="20" width="120" height="90" rx="8" fill="#181818"/>
+    <path d="M0 45 L120 45"/>
+    <circle cx="35" cy="72" r="14" stroke="#E50914" fill="#201010"/>
+    <circle cx="85" cy="72" r="14" stroke="#E50914" fill="#201010"/>
+    <path d="M20 20 L35 0 L55 0 L40 20"/>
+    <path d="M60 20 L75 0 L95 0 L80 20"/>
+    <path d="M100 20 L115 0 L120 0 L120 20"/>
+  </g>
+  
+  <text x="250" y="420" font-family="'Inter', -apple-system, sans-serif" font-size="20" font-weight="700" fill="#a0a0a0" text-anchor="middle" letter-spacing="1">NO POSTER AVAILABLE</text>
+  <text x="250" y="450" font-family="'Inter', -apple-system, sans-serif" font-size="14" font-weight="500" fill="#666666" text-anchor="middle">Cine-Stream Media Archive</text>
+</svg>
